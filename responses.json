@@ -1,0 +1,29 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hello", "hi", "hey", "good morning"],
+      "response": "Hello! How can I help you today?"
+    },
+    {
+      "tag": "store_hours",
+      "patterns": ["store hours", "opening time", "when do you open"],
+      "response": "Our store is open from 9 AM to 9 PM, Monday to Saturday."
+    },
+    {
+      "tag": "return_policy",
+      "patterns": ["return item", "refund policy", "how do I return"],
+      "response": "You can return items within 30 days of purchase with a valid receipt."
+    },
+    {
+      "tag": "delivery",
+      "patterns": ["delivery time", "how long is delivery", "shipping time"],
+      "response": "Delivery usually takes 3-5 business days."
+    },
+    {
+      "tag": "bye",
+      "patterns": ["bye", "goodbye", "see you"],
+      "response": "Thanks for visiting. Have a great day!"
+    }
+  ]
+}
