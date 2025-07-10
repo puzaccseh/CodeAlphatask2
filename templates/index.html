@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Online Chatbot Assistant</h2>
+        <div id="chat-box"></div>
+
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("chat-form");
+        const input = document.getElementById("user-input");
+        const chatBox = document.getElementById("chat-box");
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const userMsg = input.value;
+            chatBox.innerHTML += `<div class="user">You: ${userMsg}</div>`;
+            input.value = "";
+
+            const response = await fetch("/get", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "msg=" + encodeURIComponent(userMsg)
+            });
+
+            const data = await response.json();
+            chatBox.innerHTML += `<div class="bot">Bot: ${data.response}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        };
+    </script>
+</body>
+</html>
